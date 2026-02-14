@@ -9,7 +9,7 @@ A command-line tool for interacting with Notion kanban boards, designed for AI a
 1. Clone this repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/AlecBp/notion-tool.git
 cd notion-tool
 ```
 
