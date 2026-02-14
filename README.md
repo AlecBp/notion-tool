@@ -177,6 +177,35 @@ notion-tool update-status --database 0509def271a84947b6a55ddf1caee4df page-id "D
 notion-tool list-status --database 0509def271a84947b6a55ddf1caee4df
 ```
 
+### Configuring Claude Agents
+
+To enable Claude agents to use this tool, add the following to your global Claude instructions file (`~/.claude/instructions.md`):
+
+```markdown
+## Notion Integration
+
+You have access to `notion-tool`, a CLI for interacting with Notion kanban boards.
+
+**To find your database ID:** Open your Notion database and copy the ID from the URL
+(e.g., `https://www.notion.so/workspace/your-db-name-<database-id>?v=...`)
+
+**Common commands:**
+- `notion-tool query --database <database-id> --status "In Progress"` - Get items by status
+- `notion-tool update-status --database <database-id> <page-id> "Done"` - Update item status
+- `notion-tool read --database <database-id> <page-id>` - Read item details
+- `notion-tool list-status --database <database-id>` - Get available statuses
+- `notion-tool schema --database <database-id>` - View database schema
+
+**Query options:**
+- `--status, -s`: Filter by status
+- `--tags, -t`: Filter by tags (comma-separated)
+- `--limit, -l`: Maximum number of results
+
+**Output:** All commands return JSON with `success`, `data`, and `error` fields.
+```
+
+Replace `<database-id>` with your actual Notion database ID. You can use `notion-tool schema --database <id>` to explore your database structure and available options.
+
 ## Development
 
 Install development dependencies:
